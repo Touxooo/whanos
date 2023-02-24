@@ -1,0 +1,25 @@
+jenkins:
+  systemMessage: "Welcome to the Whanos instance"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          name: "Administrator"
+          password: ${JENKINS_ADMIN_PASSWORD}
+          description: "Jenkins administrator"
+  authorizationStrategy:
+    roleBased:
+      roles:
+        global:
+          - name: "admin"
+            description: "whanos admin"
+            permissions:
+              - "Overall/Administer"
+            assignments:
+              - "admin"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: true
+jobs:
+  - file: /jenkins/job_dsl.groovy

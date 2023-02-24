@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  jenkins:
+    build: .
+    image: whanos-jenkins
+    restart: unless-stopped
+    environment:
+      - JENKINS_ADMIN_PASSWORD=admin
+      - REGISTRY_HOST=925603082233.dkr.ecr.us-east-1.amazonaws.com/whanos
+      - DOCKER_HOST=tcp://docker:2375
+    depends_on:
+      - docker
+    ports:
+      - 80:8080
+    networks:
+      - whanos
+  docker:
+    image: docker:dind
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - 2375:2375
+    environment:
+     - DOCKER_TLS_CERTDIR=
+    networks:
+      - whanos
+
+networks:
+  whanos:
+  
