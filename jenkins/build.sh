@@ -27,6 +27,8 @@ fi
 
 echo "Language found : ${LANGUAGE[0]}"
 
+source /google-cloud-sdk/path.bash.inc
+
 image_name=$REGISTRY_HOST/whanos-${LANGUAGE[0]}/$1
 
 if [[ -f Dockerfile ]]; then
