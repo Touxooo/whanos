@@ -33,7 +33,7 @@ class Whanos:
                         self.port.append(int(i))
     
     def add_ressources(self):
-        dico: dict = yaml.safe_load("""
+        dico: dict = yaml.safe_load("""resources:
             requests:
               cpu: 100m
               memory: 128Mi
