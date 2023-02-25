@@ -35,7 +35,5 @@ RUN /google-cloud-sdk/bin/gcloud components install kubectl
 RUN echo "source /google-cloud-sdk/path.bash.inc" >> ~/.bashrc
 
 RUN echo "installing kubectl"
-RUN curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-RUN echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list
-RUN apt-get update -y
-RUN apt-get install -y kubectl
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
