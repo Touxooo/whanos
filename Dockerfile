@@ -27,12 +27,16 @@ COPY kubernetes /kubernetes
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 ENV CASC_JENKINS_CONFIG /jenkins/config.yml
 
+# RUN echo "installing gcloud sdk"
+# RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-419.0.0-linux-x86_64.tar.gz
+# RUN tar -xvf google-cloud-cli-419.0.0-linux-x86_64.tar.gz
+# RUN /google-cloud-sdk/install.sh
+# RUN /google-cloud-sdk/bin/gcloud components install kubectl
+# RUN echo "source /google-cloud-sdk/path.bash.inc" >> ~/.bashrc
+
 RUN echo "installing gcloud sdk"
-RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-419.0.0-linux-x86_64.tar.gz
-RUN tar -xvf google-cloud-cli-419.0.0-linux-x86_64.tar.gz
-RUN /google-cloud-sdk/install.sh
-RUN /google-cloud-sdk/bin/gcloud components install kubectl
-RUN echo "source /google-cloud-sdk/path.bash.inc" >> ~/.bashrc
+RUN curl https://sdk.cloud.google.com > install.sh
+RUN bash install.sh --disable-prompts --install-dir=/google-cloud-sdk
 
 RUN echo "installing kubectl"
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
