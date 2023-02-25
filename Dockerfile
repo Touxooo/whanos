@@ -23,6 +23,7 @@ COPY jenkins/plugins.txt /usr/share/jenkins/plugins.txt
 RUN jenkins-plugin-cli -f /usr/share/jenkins/plugins.txt
 COPY jenkins /jenkins
 COPY images /images
+COPY kubernetes /kubernetes
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 ENV CASC_JENKINS_CONFIG /jenkins/config.yml
 
