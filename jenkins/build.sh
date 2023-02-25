@@ -27,7 +27,7 @@ fi
 
 echo "Language found : ${LANGUAGE[0]}"
 
-image_name=europe-west9-docker.pkg.dev/whanos-377316/whanos-${LANGUAGE[0]}/$1
+image_name=$REGISTRY_HOST/whanos-${LANGUAGE[0]}/$1
 
 if [[ -f Dockerfile ]]; then
     docker build . -t $image_name
@@ -46,7 +46,6 @@ docker push $image_name
 if [[ -f whanos.yml ]]; then
     echo "whanos.yml found"
     echo "Deployment started ..."
-    gcloud container clusters get-credentials cluster-1 --zone europe-west8-a --project whanos-377316
     python3 /kubernetes/get_deployment.py $image_name $1
     cat deployment.yaml
     kubectl apply -f deployment.yaml

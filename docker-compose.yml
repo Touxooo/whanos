@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   jenkins:
@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     environment:
       - JENKINS_ADMIN_PASSWORD=admin
-      - REGISTRY_HOST=925603082233.dkr.ecr.us-east-1.amazonaws.com/whanos
+      - REGISTRY_HOST=europe-west9-docker.pkg.dev/whanos-terraform-test
       - DOCKER_HOST=tcp://docker:2375
     depends_on:
       - docker
@@ -22,10 +22,9 @@ services:
     ports:
       - 2375:2375
     environment:
-     - DOCKER_TLS_CERTDIR=
+      - DOCKER_TLS_CERTDIR=
     networks:
       - whanos
 
 networks:
   whanos:
-  

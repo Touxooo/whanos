@@ -30,3 +30,4 @@ RUN echo "installing gcloud sdk"
 RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-419.0.0-linux-x86_64.tar.gz
 RUN tar -xvf google-cloud-cli-419.0.0-linux-x86_64.tar.gz
 RUN /google-cloud-sdk/install.sh
+RUN /google-cloud-sdk/bin/gcloud components install kubectl

@@ -3,3 +3,4 @@ key.json
 .terraform.lock.hcl
 terraform.*
 .DS_Store
+.env

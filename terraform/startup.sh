@@ -18,3 +18,11 @@ echo \
 sudo apt-get update -y
 
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+sudo usermod -a -G docker ${USER}
+
+git clone https://github.com/Touxooo/whanos.git > git.log
+
+cd whanos
+
+sudo docker compose up -d --build

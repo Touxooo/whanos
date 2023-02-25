@@ -23,7 +23,7 @@ provider "google" {
 resource "google_compute_instance" "default" {
   name = "whanos-terraform"
   machine_type = "e2-medium"
-  zone = "europe-west9-a"
+  zone = var.gcp_zone
 
   boot_disk {
     initialize_params {
@@ -48,12 +48,12 @@ resource "google_compute_firewall" "default" {
 
   allow {
     protocol = "tcp"
-    ports = ["8080"]
+    ports = ["8080","80"]
   }
 
   allow {
     protocol = "udp"
-    ports = ["8080"]
+    ports = ["8080","80"]
   }
 
   source_ranges = [
@@ -63,61 +63,61 @@ resource "google_compute_firewall" "default" {
 
 resource "google_artifact_registry_repository" "whanos-befunge" {
   repository_id = "whanos-befunge"
-  location = "europe-west9"
+  location = var.gcp_region
   format = "DOCKER"
 }
 
 resource "google_artifact_registry_repository" "whanos-c" {
   repository_id = "whanos-c"
-  location = "europe-west9"
+  location = var.gcp_region
   format = "DOCKER"
 }
 
 resource "google_artifact_registry_repository" "whanos-java" {
   repository_id = "whanos-java"
-  location = "europe-west9"
+  location = var.gcp_region
   format = "DOCKER"
 }
 
 resource "google_artifact_registry_repository" "whanos-javascript" {
   repository_id = "whanos-javascript"
-  location = "europe-west9"
+  location = var.gcp_region
   format = "DOCKER"
 }
 
 resource "google_artifact_registry_repository" "whanos-python" {
   repository_id = "whanos-python"
-  location = "europe-west9"
+  location = var.gcp_region
   format = "DOCKER"
 }
 
-# resource "google_container_cluster" "primary" {
-#     name               = "whanos-terraform-cluster"
-#     location           = "europe-west9-a"
+resource "google_container_cluster" "primary" {
+    name               = "whanos-terraform-cluster"
+    location           = var.gcp_zone
 
-#     remove_default_node_pool = true
-#     initial_node_count = 1
-# }
+    remove_default_node_pool = true
+    initial_node_count = 1
+}
 
-# resource "google_container_node_pool" "primary_preemptible_nodes" {
-#     name       = "whanos-terraform-pool"
-#     location   = "europe-west9-a"
-#     cluster    = google_container_cluster.primary.name
+resource "google_container_node_pool" "primary_preemptible_nodes" {
+    name       = "whanos-terraform-pool"
+    location   = var.gcp_zone
+    cluster    = google_container_cluster.primary.name
 
-#     node_count = 3
+    node_count = 3
 
-#     node_config {
-#         preemptible  = true
-#         machine_type = "e2-medium"
+    node_config {
+        preemptible  = true
+        machine_type = "e2-medium"
 
-#         service_account = google_service_account.default.email
-#         oauth_scopes    = [
-#             "https://www.googleapis.com/auth/cloud-platform"
-#         ]
+        service_account = google_service_account.default.email
+        oauth_scopes    = [
+            "https://www.googleapis.com/auth/cloud-platform"
+        ]
 
-#         disk_size_gb = "30"
-#     }
-# }
+        disk_size_gb = "30"
+    }
+}
 
 output "ip" {
     value = google_compute_instance.default.network_interface[0].access_config[0].nat_ip
