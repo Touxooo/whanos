@@ -33,13 +33,8 @@ freeStyleJob("google-cloud-artifacts-auth") {
     stringParam("GOOGLE_ARTIFACT_REGISTRY_ZONE", "europe-west9-docker", "Google artifact registry zone")
   }
   steps {
-<<<<<<< HEAD
-    shell("/google-cloud-sdk/bin/gcloud components install kubectl")
-    shell("cat gcloud-service-account-key.json | docker login -u _json_key --password-stdin https://\$GOOGLE_ARTIFACT_REGISTRY_ZONE.pkg.dev")
-=======
     shell("cat gcloud-service-account-key.json | docker login -u _json_key --password-stdin https://\$GOOGLE_ARTIFACT_REGISTRY_ZONE.pkg.dev")
     shell("/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=gcloud-service-account-key.json")
->>>>>>> origin/auto_deploy
     shell("/google-cloud-sdk/bin/gcloud config set project \$GOOGLE_PROJECT_ID")
     shell("/google-cloud-sdk/bin/gcloud container clusters get-credentials \$GCLOUD_KUBERNETE_CLUSTER_NAME --zone \$GCLOUD_KUBERNETE_CLUSTER_LOCATION")
   }
