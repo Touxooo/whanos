@@ -69,10 +69,10 @@ class Whanos:
 image: str = sys.argv[1]
 project_name: str = sys.argv[2]
 
-with open("../kubernetes/deployment_template.yaml", "r") as f:
+with open("/kubernetes/deployment_template.yaml", "r") as f:
     deployment_f = yaml.safe_load(f)
 
-with open("../kubernetes/service_template.yaml", "r") as f:
+with open("/kubernetes/service_template.yaml", "r") as f:
     service_f = yaml.safe_load(f)
 
 with open("whanos.yml", "r") as f:
