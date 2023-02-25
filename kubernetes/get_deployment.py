@@ -33,36 +33,36 @@ class Whanos:
                         self.port.append(int(i))
     
     def add_ressources(self):
-        dico: dict = yaml.safe_load("""resources:
-            requests:
-              cpu: 100m
-              memory: 128Mi
-            limits:
-              cpu: 250m
-              memory: 250Mi
+        dico: dict = yaml.safe_load("""
+    limits:
+      memory: "128M"
+      cpu: "128M"
+    requests:
+      memory: "64M"
+      cpu: "128M"
 """)
         if self.haslimits:
             if self.limitscpu:
-                dico["resources"]["limits"]["cpu"] = self.limitscpu
+                dico["limits"]["cpu"] = self.limitscpu
             else:
-                del dico["resources"]["limits"]["cpu"]
+                del dico["limits"]["cpu"]
             if self.limitsmemory:
-                dico["resources"]["limits"]["memory"] = self.limitsmemory
+                dico["limits"]["memory"] = self.limitsmemory
             else:
-                del dico["resources"]["limits"]["memory"]
+                del dico["limits"]["memory"]
         else:
-            del dico["resources"]["limits"]
+            del dico["limits"]
         if self.hasrequests:
             if self.requestscpu:
-                dico["resources"]["requests"]["cpu"] = self.requestscpu
+                dico["requests"]["cpu"] = self.requestscpu
             else:
-                del dico["resources"]["requests"]["cpu"]
+                del dico["requests"]["cpu"]
             if  self.requestsmemory:
-                dico["resources"]["requests"]["memory"] = self.requestsmemory
+                dico["requests"]["memory"] = self.requestsmemory
             else:
-                del dico["resources"]["requests"]["memory"]
+                del dico["requests"]["memory"]
         else:
-            del dico["resources"]["requests"]
+            del dico["requests"]
         self.ressources = dico
 
 
