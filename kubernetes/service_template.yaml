@@ -5,7 +5,7 @@ metadata:
   labels:
     app: whanos-name
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: whanos-name
   ports:
