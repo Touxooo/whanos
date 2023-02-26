@@ -32,7 +32,7 @@ Now fill with the list of element we've just seen above
 Once you done, you can use the differents Jobs :
 
 ## Link-Project
-This job is used to link a project and deploy it if it have a [whanos.yaml](whanosyaml_explain.md) at the root of the repository. It will build an image and push it to the Google Artifact Registry.
+This job is used to link a project and deploy it if it have a [whanos.yml](whanosyml_explain.md) at the root of the repository. It will build an image and push it to the Google Artifact Registry.
 ## Whanos Base Images
 This job is used to build the base images of Whanos.
 ## Whanos Base Images -> Build all base images
