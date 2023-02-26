@@ -6,7 +6,7 @@ folder("Projects") {
   description("Projects")
 }
 
-languages = ["c", "java", "javascript", "python", "befunge"]
+languages = ["c", "java", "javascript", "python", "befunge", "cpp", "go", "rust"]
 
 languages.each{ language -> 
   freeStyleJob("Whanos Base Images/whanos-$language") {

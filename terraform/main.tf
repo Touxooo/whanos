@@ -91,6 +91,24 @@ resource "google_artifact_registry_repository" "whanos-python" {
   format = "DOCKER"
 }
 
+resource "google_artifact_registry_repository" "whanos-python" {
+  repository_id = "whanos-cpp"
+  location = var.gcp_region
+  format = "DOCKER"
+}
+
+resource "google_artifact_registry_repository" "whanos-python" {
+  repository_id = "whanos-go"
+  location = var.gcp_region
+  format = "DOCKER"
+}
+
+resource "google_artifact_registry_repository" "whanos-python" {
+  repository_id = "whanos-rust"
+  location = var.gcp_region
+  format = "DOCKER"
+}
+
 resource "google_container_cluster" "primary" {
     name               = "whanos-terraform-cluster"
     location           = var.gcp_zone

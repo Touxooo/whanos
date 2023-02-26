@@ -3,8 +3,17 @@ LANGUAGES=()
 if [[ -f Makefile ]]; then
     LANGUAGE+=("c")
 fi
+if [[ -f CMakeLists.txt ]]; then
+    LANGUAGE+=("cpp")
+fi
 if [[ -f app/pom.xml ]]; then
     LANGUAGE+=("java")
+fi
+if [[ -n $(find . -name '*.go') ]]; then
+    LANGUAGE+=("go")
+fi
+if [[ -f Cargo.toml ]]; then
+    LANGUAGE+=("rust")
 fi
 if [[ -f package.json ]]; then
     LANGUAGE+=("javascript")
