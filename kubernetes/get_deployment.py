@@ -69,10 +69,10 @@ class Whanos:
 image: str = sys.argv[1]
 project_name: str = sys.argv[2]
 
-with open("/kubernetes/deployment_template.yaml", "r") as f:
+with open("../kubernetes/deployment_template.yaml", "r") as f:
     deployment_f = yaml.safe_load(f)
 
-with open("/kubernetes/service_template.yaml", "r") as f:
+with open("../kubernetes/service_template.yaml", "r") as f:
     service_f = yaml.safe_load(f)
 
 with open("whanos.yml", "r") as f:
@@ -96,7 +96,7 @@ if len(whanos.port) > 0:
         service_f["spec"]["ports"][i]["targetPort"] = whanos.port[i]
 else:
     del deployment_f["spec"]["template"]["spec"]["containers"][0]["ports"]
-data:str = yaml.safe_dump(deployment_f) + "---\n" + yaml.safe_dump(service_f)
+data:str = yaml.safe_dump(deployment_f) + "---\n" + yaml.safe_dump(service_f) if len(whanos.port) > 0 else yaml.safe_dump(deployment_f)
 data = data.replace("whanos-name", project_name)
 deploy = open("deployment.yaml", "w")
 print(data, file=deploy)
