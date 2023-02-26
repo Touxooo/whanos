@@ -91,19 +91,19 @@ resource "google_artifact_registry_repository" "whanos-python" {
   format = "DOCKER"
 }
 
-resource "google_artifact_registry_repository" "whanos-python" {
+resource "google_artifact_registry_repository" "whanos-cpp" {
   repository_id = "whanos-cpp"
   location = var.gcp_region
   format = "DOCKER"
 }
 
-resource "google_artifact_registry_repository" "whanos-python" {
+resource "google_artifact_registry_repository" "whanos-go" {
   repository_id = "whanos-go"
   location = var.gcp_region
   format = "DOCKER"
 }
 
-resource "google_artifact_registry_repository" "whanos-python" {
+resource "google_artifact_registry_repository" "whanos-rust" {
   repository_id = "whanos-rust"
   location = var.gcp_region
   format = "DOCKER"
