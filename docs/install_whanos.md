@@ -83,4 +83,4 @@ terraform apply
 
 7. Paste the IP on your web navigator
 
-8. Enjoy your whanos! If you don't know how to use it, go to this [documentation](https://github.com/Touxooo/whanos/docs/setup_whanos.md)
+8. Enjoy your whanos! If you don't know how to use it, go to this [documentation](setup_whanos.md)
