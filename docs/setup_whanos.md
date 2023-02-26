@@ -39,3 +39,7 @@ This job is used to build the base images of Whanos.
 This job is used to build all the base images of Whanos.
 ## Projects
 You will find here all the projects you've linked to Whanos and force run them, else at every change in the repo it will run itself.
+  
+  
+## Deployment
+If you are intereted in how your applications are deployed you can read this documentation [here](auto_deploy.md).
