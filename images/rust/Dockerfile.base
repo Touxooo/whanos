@@ -4,6 +4,6 @@ SHELL [ "/bin/bash", "-c" ]
 
 WORKDIR /app
 
-COPY . .
+ONBUILD COPY . .
 
 ONBUILD RUN cargo build

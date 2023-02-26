@@ -6,6 +6,6 @@ RUN apk add --no-cache bash
 
 SHELL [ "/bin/bash", "-c" ]
 
-COPY requirements.txt .
+ONBUILD COPY requirements.txt .
 
 ONBUILD RUN pip install -r requirements.txt

@@ -12,8 +12,8 @@ RUN apk add cmake
 
 RUN apk add build-base
 
-COPY . .
+ONBUILD COPY . .
 
-RUN cmake -B ./build
+ONBUILD RUN cmake -B ./build
 
 ONBUILD RUN cmake --build ./build/

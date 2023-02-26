@@ -6,6 +6,6 @@ RUN apk add --no-cache bash
 
 SHELL [ "/bin/bash", "-c" ]
 
-COPY . .
+ONBUILD COPY . .
 
 ONBUILD RUN mvn package

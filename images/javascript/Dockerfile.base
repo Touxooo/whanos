@@ -6,6 +6,6 @@ WORKDIR /app
 
 RUN apk add --no-cache bash
 
-COPY ./*.json .
+ONBUILD COPY ./*.json .
 
 ONBUILD RUN npm install

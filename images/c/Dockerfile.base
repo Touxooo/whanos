@@ -4,6 +4,6 @@ SHELL [ "/bin/bash", "-c" ]
 
 WORKDIR /app
 
-COPY . /app
+ONBUILD COPY . /app
 
 ONBUILD RUN make
