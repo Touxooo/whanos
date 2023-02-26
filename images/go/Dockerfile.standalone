@@ -1,14 +1,16 @@
 FROM alpine:latest as builder
 
-SHELL [ "/bin/bash", "-c" ]
-
 WORKDIR /app
+
+RUN apk add --no-cache bash
+
+SHELL [ "/bin/bash", "-c" ]
 
 RUN apk add go
 
 RUN apk add make
 
-COPY ./app .
+COPY . .
 
 RUN make
 
