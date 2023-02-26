@@ -11,7 +11,7 @@ languages = ["c", "java", "javascript", "python", "befunge", "cpp", "go", "rust"
 languages.each{ language -> 
   freeStyleJob("Whanos Base Images/whanos-$language") {
     steps {
-      shell("docker build -t whanos-$language:latest -f /images/$language/Dockerfile.standalone /images/$language")
+      shell("docker build -t whanos-$language:latest -f /images/$language/Dockerfile.base /images/$language")
     }
   }
 }
