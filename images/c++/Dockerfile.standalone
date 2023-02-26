@@ -1,0 +1,29 @@
+FROM alpine:latest as builder
+
+WORKDIR /app
+
+RUN apk add --no-cache bash
+
+SHELL [ "/bin/bash", "-c" ]
+
+RUN apk add make
+
+RUN apk add cmake
+
+RUN apk add build-base
+
+COPY . .
+
+RUN cmake -B ./build
+
+RUN cmake --build ./build/
+
+FROM alpine:latest
+
+WORKDIR /app
+
+COPY --from=builder /app .
+
+RUN apk add build-base
+
+CMD ["/app/compiled-app"]

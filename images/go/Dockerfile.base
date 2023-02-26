@@ -1,4 +1,4 @@
-FROM maven:3.8.5-openjdk-17
+FROM alpine:latest
 
 WORKDIR /app
 
@@ -6,6 +6,10 @@ RUN apk add --no-cache bash
 
 SHELL [ "/bin/bash", "-c" ]
 
+RUN apk add go
+
+RUN apk add make
+
 COPY . .
 
-ONBUILD RUN mvn package
+ONBUILD RUN make
