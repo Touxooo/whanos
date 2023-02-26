@@ -1,4 +1,4 @@
-# How to setup Whanos
+# How to install Whanos
 
 ## Prerequisites
 
@@ -49,20 +49,38 @@ git clone https://github.com/Touxooo/whanos.git
 
 4. Replace the variables within `variables.tf` by your.
 
-5. Init Terraform within terraform/ folder
+## Install Whanos
+
+1. Set the registry host and jenkins admin password in the `.env` file.
+
+   **Registry Host**
+
+   [GCLOUD_LOCATION].pkg.dev/[GCLOUD_PROJECT]
+
+   Example: europe-west9-docker.pkg.dev/whanos-terraform-test
+
+2. Init Terraform within terraform/ folder
 
 ```sh
 cd terraform && terraform init
 ```
 
-6. Make a plan to see all changes coming
+3. Make a plan to see all changes coming
 
 ```sh
 terraform plan
 ```
 
-7. Once you agree with all changes, apply the terraform configuration
+4. Once you agree with all changes, apply the terraform configuration
 
 ```sh
 terraform apply
 ```
+
+5. Wait 5 to 10 minutes the installation of Whanos on the Google Cloud servers
+
+6. Copy the external IP you have on your terraform output
+
+7. Paste the IP on your web navigator
+
+8. Enjoy your whanos! If you don't know how to use it, go to this [documentation](https://github.com/Touxooo/whanos/docs/setup_whanos.md)

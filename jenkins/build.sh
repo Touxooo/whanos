@@ -51,5 +51,8 @@ if [[ -f whanos.yml ]]; then
     python3 /kubernetes/get_deployment.py $image_name $1
     cat deployment.yaml
     kubectl apply -f deployment.yaml
+    echo "Deployment finished"
+    echo "LoadBalancer details:"
+    kubectl describe services $1-service
     exit 0
 fi
