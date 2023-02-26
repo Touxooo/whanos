@@ -1,5 +1,7 @@
 FROM alpine
 
+SHELL [ "/bin/bash", "-c" ]
+
 WORKDIR /app
 
 RUN apk add git

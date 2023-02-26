@@ -1,4 +1,6 @@
-FROM node:14-alpine as builder
+FROM node:14.17.5-alpine as builder
+
+SHELL [ "/bin/bash", "-c" ]
 
 WORKDIR /app
 
@@ -6,7 +8,11 @@ COPY ./*.json .
 
 RUN npm install
 
-FROM node:14-alpine
+
+
+FROM node:14.17.5-alpine
+
+SHELL [ "/bin/bash", "-c" ]
 
 WORKDIR /app
 

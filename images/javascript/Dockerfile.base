@@ -1,4 +1,6 @@
-FROM node:18-alpine
+FROM node:14.17.5-alpine
+
+SHELL [ "/bin/bash", "-c" ]
 
 WORKDIR /app
 

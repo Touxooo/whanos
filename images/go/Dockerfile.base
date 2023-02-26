@@ -1,0 +1,13 @@
+FROM alpine:latest
+
+SHELL [ "/bin/bash", "-c" ]
+
+WORKDIR /app
+
+RUN apk add go
+
+RUN apk add make
+
+COPY . .
+
+ONBUILD RUN make

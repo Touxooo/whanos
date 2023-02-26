@@ -1,0 +1,21 @@
+FROM alpine:latest as builder
+
+SHELL [ "/bin/bash", "-c" ]
+
+WORKDIR /app
+
+RUN apk add go
+
+RUN apk add make
+
+COPY ./app .
+
+RUN make
+
+FROM alpine:latest
+
+WORKDIR /app
+
+COPY --from=builder /app/compiled-app .
+
+CMD [ "./compiled-app" ]

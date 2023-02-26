@@ -1,5 +1,7 @@
 FROM maven:3.8.5-openjdk-17 as builder
 
+SHELL [ "/bin/bash", "-c" ]
+
 WORKDIR /app
 
 COPY /app /app
