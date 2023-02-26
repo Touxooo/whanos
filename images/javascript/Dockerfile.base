@@ -1,8 +1,10 @@
-FROM node:14.17.5-alpine
+FROM node:14.17.5
 
 SHELL [ "/bin/bash", "-c" ]
 
 WORKDIR /app
+
+RUN apk add --no-cache bash
 
 COPY ./*.json .
 
