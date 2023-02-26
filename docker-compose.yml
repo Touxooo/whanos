@@ -5,9 +5,9 @@ services:
     build: .
     image: whanos-jenkins
     restart: unless-stopped
-    env_file:
-      - .env
     environment:
+      - JENKINS_ADMIN_PASSWORD=admin
+      - REGISTRY_HOST=europe-west9-docker.pkg.dev/whanos-terraform-test
       - DOCKER_HOST=tcp://docker:2375
     depends_on:
       - docker
