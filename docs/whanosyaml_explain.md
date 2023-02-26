@@ -1,4 +1,4 @@
-# Whanos YAML Explain
+# Whanos YML Explain
 
 ## Exemple of whanos.yml file
 
