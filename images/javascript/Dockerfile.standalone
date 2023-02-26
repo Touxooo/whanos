@@ -8,8 +8,6 @@ COPY ./*.json .
 
 RUN npm install
 
-
-
 FROM node:14.17.5-alpine
 
 SHELL [ "/bin/bash", "-c" ]
